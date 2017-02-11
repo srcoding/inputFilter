@@ -17,4 +17,15 @@ InputFilterHelper.Builder builder = new InputFilterHelper.Builder()
         InputFilter[] inputFilters = InputFilterHelper.build(builder).genFilters();
        
 editText.setFilters(inputFilters)
+```  
+
+采用Handler的方式来添加对EditText的输入限制，使得输入限制的扩展也非常简单,实现可参考NumberFilterHandler:  
+
+```java
+public class NumberFilterHandler implements IFilterHandler {
+    @Override
+    public String getFilterRegexStr() {
+        return "0-9";//返回的是输入限制的正则匹配，该例是允许输入数字，因此返回的是数字的正则匹配表达式
+    }
+}
 ```
